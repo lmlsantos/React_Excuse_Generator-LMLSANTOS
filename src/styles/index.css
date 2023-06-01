@@ -10,3 +10,72 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
+  }
+  body {
+    background-color: #bfbfbf;
+  }
+  
+  .header {
+    width: 70%;
+    text-align: center;
+    background-color: #333333;
+    border: 1px solid #f0ffff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px;
+    font-size: 1rem;
+    color: #f0ffff;
+    padding: 8px;
+    margin: 10px auto;
+    letter-spacing: 2px;
+  }
+
+  .excuseContainer {
+    width: 70%; 
+    border: 2px solid #f0ffff;
+    border-radius: 5px;
+    background: linear-gradient(45deg, #006400, #c0c0c0);
+    box-shadow: 0 0 10px;
+    text-align: center;
+    height: 40vh;
+    margin: 10px auto;
+    font-family:cursive;
+    font-size: 3em;
+    color: #1a1a1a;
+   
+  }
+
+  .footerSection {
+    width: 70%;
+    background-color: #f0e6e6;
+    box-shadow: 0 0 10px;
+    border: 1px solid #f0ffff;
+    border-radius: 5px;
+    justify-content: center;
+    text-align: center;
+    margin: 10px auto;
+    color: black;
+    font-weight: bold;
+  }
+
+  .buttonSection{
+    width: 25%;
+    background-color: #333333;
+    color: #f0ffff;
+    padding: 6px 40px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px;
+    margin: 10px auto;
+    font-size: 1.2rem;
+    margin-top: 20px;
+  }
+ 
+  .buttonSection:active{
+    background-color: #66cc00;
+    color: #333333;
+  }
