@@ -4,19 +4,35 @@ import React, { useEffect, useState } from "react";
 
 //Generate the excuse
 const Button = (props) => {
-    const [excuse, setExcuse] = useState ("");
-    const [count, setCount] = useState (0);
-    const [intervalId, setIntrevalId] = useState(null);
+    const [excuse, setExcuse] = useState("");
+    const [count, setCount] = useState(0);
     //showing the time
-    
-    const [timer, setTimer]=useState(5000);
+    const [timer, setTimer]=useState(10000);
     //converting the time to seconds
-    const seconds = Math.floor(timer/1000);
-       
+    const [seconds, setSeconds] = useState(Math.floor(timer/1000))       
+    
     const click = ()=> {
-        excuseGenerator();
-        
+        excuseGenerator();     
     };
+    
+    useEffect(()=>{
+      const interval = setInterval(() => {
+        setSeconds(prevSeconds => {
+          if(prevSeconds<=0){
+            clearInterval(interval);
+            excuseGenerator();
+            setCount(prevCount=>prevCount+1)
+            return(Math.floor(timer/1000));  
+          };
+            return prevSeconds-1 ;  
+        });
+      }, 1000);
+      
+      return () => {
+        clearInterval(interval);
+         
+      };
+    }, [seconds, timer]);
 
     const excuseGenerator = () => {
         let who = ["The dog", "My grandma", "His turtle", "My bird"];
@@ -40,20 +56,9 @@ const Button = (props) => {
                 " " +
                 when[Math.floor(Math.random() * when.length)]
             
-        setExcuse(finalExcuse);
-        setCount((c)=>c+1);
-        setTimer(timer);
+        setExcuse(finalExcuse);  
       };
-
-      
-    useEffect(()=>{
-        const interval = setInterval(excuseGenerator,timer);
-        setIntrevalId(interval);
-        return () => {
-            clearInterval(intervalId);
-        };
-    }, [timer]);
-         
+        
     return (
         <div>
             <div className="mt-4 fs-4 fw-bold text-light">The excuse of the day:</div>
